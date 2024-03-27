@@ -1,0 +1,117 @@
+<div class="wrapper">
+  
+
+    
+    <div class="container">
+            <form [formGroup]="userForm" class="sub-container">
+
+
+                <div class="hello">
+                   
+                    <label for="">Name</label>
+                    <input placeholder="Name" type="text" class="form-control" formControlName="name"/>
+                    <div class="Error"
+                        *ngIf="!userForm.get('name')?.valid && (userForm.get('name')?.dirty || !userForm.get('name')?.untouched)"
+                        >
+                        <sup>*</sup>Please fill the required correctly
+                    </div>
+                </div>
+                
+
+                <div class="hello">
+                    <label for="">Email</label>
+                    <input 
+                        placeholder="Email" type="email" class="form-control" formControlName="email"
+                    />
+                    <div class="Error"
+                        *ngIf="!userForm.get('email')?.valid && (userForm.get('email')?.dirty || !userForm.get('email')?.untouched)"
+                        >
+                        <sup>*</sup>Please Fill the email correctly
+                    </div>
+                </div>
+
+                
+
+                <div class="hello">
+                    <label for="">Date of Birth</label>
+                    <input placeholder="Date of Birth" type="date" class="form-control" formControlName="Date"/>
+                    <div class="Error"
+                    *ngIf="!userForm.get('Date')?.valid && (userForm.get('Date')?.dirty || !userForm.get('Date')?.untouched)"
+                    >
+                    <sup>*</sup>Please fill the required correctly
+                </div>
+                </div>
+
+                <div class="hello">
+                    <label for="descrip">Describe</label>
+                    <textarea placeholder="Describe" name="descrip" type="text" class="form-control1" rows="4"  formControlName="Describe"></textarea>
+                    <div class="Error"
+                        *ngIf="!userForm.get('Describe')?.valid && (userForm.get('Describe')?.dirty || !userForm.get('Describe')?.untouched)"
+                        >
+                        <sup>*</sup>Please fill the required correctly
+                    </div>
+                </div>
+
+
+                <div class="hello1">
+
+                    <button class="btn" (click)="this.userForm.reset()">
+                        CANCEL
+                    </button>
+
+                    <div>
+                        <button
+                        
+                        (click)="onSaveUser()"
+                        class="btn-btn" >
+                            SAVE
+                        </button>
+                        
+                    </div>
+
+                </div>
+                
+            </form>
+            
+            <div class="bigtable"
+                *ngIf="!(tableData ===' ')">
+                <table  
+                 class="toptable">
+                    <tr class="tablehead">
+                        <th></th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Date Of Birth</th>
+                        <th>Describe</th>
+                    </tr>
+                    
+                    <tr *ngFor="let tableD of tableData; let i = index"
+                        class="tablerow">
+                        <button
+                        (click)="rowData()"
+                        type="checkbox"  
+                        >{{tableD[i]}}</button>
+                        <td >{{tableData[i]?.name}} </td>
+                        <td >{{tableData[i]?.email}}</td>
+                        <td>{{tableData[i]?.Date}}</td>
+                        <td>{{tableData[i]?.Describe}}</td>
+                        <button
+                        class=""
+                        (click)="fetchData()"
+                        >
+                       <mat-icon>
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                        </mat-icon>
+
+                        </button>
+                    </tr>
+                </table>
+                
+            </div>
+
+       
+
+    </div>
+</div>
